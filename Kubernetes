@@ -2,7 +2,7 @@ KUBERNETES INSTALLATION AND CLUSTER SETUP (YouTube channel name : Easytech_9S)
 
 Pre-requisites : Ubuntu Linux 
                  Ubuntu t2.medium 1 instance (Master "Control Plane Node" )
-                 Ubunte t2.micro 2 intances (Worker Nodes)
+                 Ubunte t2.micro 2 instances (Worker Nodes)
 
 {{{{{ Execute On 3 ubuntu instances }}}}}
 
