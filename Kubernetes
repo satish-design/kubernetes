@@ -63,5 +63,65 @@ kubeadm token create --print-join-command
 
 Give The Generated Token on Worker Nodes .
 
+KUBERNETES ARCHITECTURE 
+
+Kubernetes is a container orchestration platform that helps you deploy, manage, and scale containerized applications. Its architecture is split into two major parts
+1. Control Plane (Master Node)
+
+>>>API Server (kube-apiserver)
+The front-end of the Kubernetes control plane.
+Exposes APIs that users, tools, and components interact with (like kubectl or the dashboard).
+All communication goes through here.
+
+>>>etcd
+A consistent, distributed key-value store.
+Stores all cluster data: configuration, state, secrets, etc.
+Highly available and fault-tolerant.
+
+>>>Scheduler (kube-scheduler)
+Assigns new pods to nodes based on available resources, policies, and constraints.
+Considers CPU, memory, affinity rules, etc.
+
+>>>Controller Manager (kube-controller-manager)
+Runs different controllers that handle tasks such as:
+Node controller (monitors node health)
+Replication controller (maintains correct number of pod replicas)
+Endpoints controller (manages service endpoints)
+
+
+2. Worker Node (Minions)
+Kubelet
+
+A small agent running on each worker node.
+Communicates with the API Server.
+Starts, stops, and manages containers via the container runtime.
+
+Kube Proxy
+Manages network traffic into and out of the node.
+Enables service discovery and load balancing.
+Handles rules for forwarding traffic to the correct pod IP and port.
+
+Container Runtime
+Software that runs containers.
+Examples: Docker, containerd, CRI-O.
+Kubelet talks to this to start and manage containers.
+
+🔹 3. Pods
+The smallest deployable unit in Kubernetes.
+A pod can have one or more containers that share the same network and storage.
+Kubernetes manages pods, not containers directly.
+
+🔄 How It All Works Together:
+A user runs kubectl apply -f okso.yaml.
+The API Server receives this and stores the desired state in etcd.
+The Scheduler picks a suitable worker node.
+The Kubelet on that node pulls the container image via the runtime.
+The Controller Manager ensures the deployment stays healthy (e.g., recreates pods if they crash).
+The Kube Proxy manages traffic to/from the pods.
+
+
+
+
+
 
 
