@@ -90,23 +90,22 @@ Endpoints controller (manages service endpoints)
 
 
 2. Worker Node (Minions)
-Kubelet
-
+>>> Kubelet
 A small agent running on each worker node.
 Communicates with the API Server.
 Starts, stops, and manages containers via the container runtime.
 
-Kube Proxy
+>>> Kube Proxy
 Manages network traffic into and out of the node.
 Enables service discovery and load balancing.
 Handles rules for forwarding traffic to the correct pod IP and port.
 
-Container Runtime
+>>> Container Runtime
 Software that runs containers.
 Examples: Docker, containerd, CRI-O.
 Kubelet talks to this to start and manage containers.
 
-🔹 3. Pods
+ >>> Pods
 The smallest deployable unit in Kubernetes.
 A pod can have one or more containers that share the same network and storage.
 Kubernetes manages pods, not containers directly.
